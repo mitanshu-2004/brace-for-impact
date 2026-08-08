@@ -1,0 +1,14 @@
+# Two-space indentation follows mjlab, which this task plugs into.
+line-length = 90
+indent-width = 2
+
+[lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = [
+  "E501",    # long lines are caught by the formatter
+  "B008",    # dataclass-style defaults are used deliberately in the cfgs
+]
+
+[format]
+indent-style = "space"
+quote-style = "double"

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Training output: checkpoints and TensorBoard events. Published to the Hub instead.
+logs/
+runs/
+
+# Rendered video. Published to the Hub; only the README GIFs are tracked.
+clips/
+*.mp4
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
