@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: Bracing for a hit
+message: If you use this code or the measurements, please cite it.
+type: software
+authors:
+  - family-names: Goel
+    given-names: Mitanshu
+repository-code: https://github.com/mitanshu-2004/go1-brace
+abstract: >-
+  Two four-legged walking robots trained identically, except one was warned before
+  each shove and the other was not. The warning cuts falls fivefold against hard
+  shoves. Switching the warning off afterwards leaves that robot far worse than the
+  one that never had a warning, so the warning became a crutch rather than an
+  addition.
+keywords:
+  - reinforcement learning
+  - legged locomotion
+  - push recovery
+  - mjlab
+license: MIT
+version: 1.0.0

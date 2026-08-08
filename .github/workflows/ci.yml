@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m compileall -q brace_task scripts tests
+      - run: pipx run ruff check .
+
+# Only static checks run here.
+#
+# The test suite is not included: importing brace_task pulls in mjlab, which pulls in
+# mujoco_warp and a CUDA build of torch, and test_wrench_lifecycle needs a real device.
+# A GitHub-hosted runner has neither. Run `pytest` on the machine you train on.
+#
+# `ruff format` is not enforced. It splits paired argparse arguments onto separate
+# lines, which makes the CLI construction in scripts/train.py harder to read than the
+# hand-formatted version.

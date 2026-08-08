@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "go1-brace"
+version = "1.0.0"
+description = "If you warn a walking robot that a shove is coming, does it stay on its feet?"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Mitanshu Goel" }]
+keywords = ["reinforcement-learning", "robotics", "locomotion", "mujoco", "mjlab"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  # Pinned exactly. The released 1.5.3 and the GitHub main branch share a version
+  # string but differ in CommandTerm internals, so a range would silently change
+  # which _update_command contract applies. See docs/mjlab-notes.md.
+  "mjlab==1.5.3",
+  "torch>=2.4",
+  "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# Evaluation figures and the video pipeline. Not needed to train.
+analysis = ["matplotlib>=3.8"]
+video = ["imageio>=2.34", "imageio-ffmpeg>=0.5", "pillow>=10.0"]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/mitanshu-2004/go1-brace"
+"Videos and trained robots" = "https://github.com/mitanshu-2004/go1-brace/releases/latest"
+
+[tool.setuptools]
+packages = ["brace_task"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: needs a CUDA device"]
